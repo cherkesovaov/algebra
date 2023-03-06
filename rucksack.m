@@ -22,7 +22,10 @@ function rucksack
   endfor
   it=1;
   while((cmax<C*0.8)&(it<6))
-    it=1;
+    if(it==0)
+      %'plused'
+      it=1;
+    endif
     l=1;
     for i=1:m
       for j=1:m
@@ -32,8 +35,8 @@ function rucksack
           B(l,s)=mod((B(l,s)+((randi(2))-1)),2);
           if(B(l,:)*weight'<=W)
             if(B(l,:)*cost'>cmax)
-              cmax=B(l,:)*cost'
-              rfinal=B(l,:)
+              cmax=B(l,:)*cost';
+              rfinal=B(l,:);
               it=0;
             endif
             l=l+1;
@@ -44,8 +47,8 @@ function rucksack
     A=B;
     B;
     if(it>0)
-      'plused'
-      it=it+1
+      %'plused'
+      it=it+1;
     endif
     it;
   endwhile
