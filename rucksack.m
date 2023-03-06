@@ -22,6 +22,7 @@ function rucksack
   endfor
   it=1;
   while((cmax<C*0.8)&(it<6))
+    it=1;
     l=1;
     for i=1:m
       for j=1:m
@@ -35,18 +36,20 @@ function rucksack
               rfinal=B(l,:)
               it=0;
             endif
-            l++;
+            l=l+1;
           endif
          endif
       endfor
     endfor
     A=B;
-    if(it!=0)
-      it++;
+    B;
+    if(it>0)
+      'plused'
+      it=it+1
     endif
-    it
+    it;
   endwhile
   cmax
   rfinal
-  %'finished'
+  'finished'
 endfunction
