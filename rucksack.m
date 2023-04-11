@@ -1,19 +1,22 @@
 function rucksack
   clear;
   clc;
-  file='C:\Users\Olga\Desktop\new_object\data\ks_4_0.txt';
-  [n, k]=dlmread(file,' ',0,0)
-  weight=dlmread(file, '\n', 1,0)
-  cost=dlmread(file, '\n', 1,1)
- % n=4;
-  m=5;
-  %k=4;
-  cmax=0;
-  rfinal=zeros(1,10);
-  %weight=[4, 5, 8, 3];
-  %cost=[8, 10, 15, 4];
-  W=11;
+  file="c:\\users\\olga\\desktop\\new_object\\data\\ks_100_2";
+  m=25;
+  limit=9816; %пусть уже выдаст ответ
+  l=zeros(1,2);
+  l=dlmread(file, " ",0,0);
+  n=l(1,1);
+  W=l(1,2);
+  weight=zeros(1,n);
+  cost=zeros(1,n);
+  for(i=1:n)
+    l=dlmread(file," ",i,0);
+    weight(i)=l(1,2);
+    cost(i)=l(1,1);
+  endfor
   C=sum(cost);
+  cmax=0;
   for i=1:m
     A(i,:)=randi(2,1,n)-ones(1,n);
     while(A(i,:)*weight'>W)
@@ -25,7 +28,8 @@ function rucksack
     endif
   endfor
   it=1;
-  while((cmax<C*0.8)&(it<6))
+  k=floor(n/2);
+  while((cmax<C*0.8)&(it<6)&(cmax<limit))
     if(it==0)
       it=1;
     endif
@@ -45,6 +49,7 @@ function rucksack
             l=l+1;
           endif
          endif
+         %cmax
       endfor
     endfor
     A=B;
