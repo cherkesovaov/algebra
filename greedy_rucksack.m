@@ -1,17 +1,14 @@
 function greedy_rucksack
   clear;
   clc;
-  file="c:\\users\\olga\\desktop\\new_object\\data\\ks_200_0";
-  l=zeros(1,2);
-  l=dlmread(file, " ",0,0);
-  n=l(1,1);
-  W=l(1,2);
+  file=fopen("c:\\users\\olga\\desktop\\new_object\\data\\ks_200_0","r");
+  n=fscanf(file,"%d",1);
+  W=fscanf(file,"%d",1);
   weight=zeros(1,n);
   cost=zeros(1,n);
   for(i=1:n)
-    l=dlmread(file," ",[i,0,i,1]);
-    weight(i)=l(1,2);
-    cost(i)=l(1,1);
+    cost(i)=fscanf(file,"%d",1);
+    weight(i)=fscanf(file,"%d",1);
   endfor
   C=sum(cost);
   cmax=0;
