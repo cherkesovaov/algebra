@@ -1,0 +1,16 @@
+include "alldifferent.mzn";
+include "gecode.mzn";
+include "C:/Users/Olga/Desktop/progs/data/SC/SC/data.dzn";
+int: n;
+int: m;
+array [1..n] of var 0..n-1: N;
+array [1..m] of var 0..m-1: M;
+array [1..m] of int: cost;
+array [1..m,1..n] of int:S;
+array [1..m] of var 0..1: built;
+array [1..n] of var 0..1: regions;
+set of int: towers=1..m;
+set of int: reg=1..n;
+constraint forall([sum (i in towers) (S[i,j]*built[i]) >0| j in reg]);
+solve minimize sum (i in towers)(cost[i]*built[i]);
+output[show(built) ++ "\n" ++ show(sum (i in towers)(cost[i]*built[i]))++"\n"];
