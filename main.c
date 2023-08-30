@@ -8,7 +8,6 @@ int main()
 {
     FILE *file, *data, *ans, *output, *table,*names;
     char* path="C:/Users/Olga/Desktop/progs/data/SC/SC/sc_6_1";
-    //char* name="tsp_51_1";
     file=fopen(path,"r");
     int N,M;
     int i,j;
@@ -24,11 +23,9 @@ int main()
         }
     }
     for(i=0;i<M;i++){
-        //printf("WEEEEEE\n");
         fscanf(file,"%d",&c[i]);
         str=fgets(string,2*N+1,file);
         ans=fopen("C:/Users/Olga/Desktop/progs/data/SC/SC/ans","w+");
-        //printf("%s\n",string);
         fprintf(ans,"%s",string);
         fclose(ans);
         num=0;
@@ -43,12 +40,7 @@ int main()
             fscanf(ans,"%d",&r);
             S[i][r]=1;
         }
-        //printf("WEEEEEE\n");
         fclose(ans);
-        //printf("WEEEEEE\n");
-        //free(str);
-        //printf("WEEEEEE\n");
-        //free(string);
         remove("C:/Users/Olga/Desktop/progs/data/SC/SC/ans");
         //printf("WEEEEEE\n");
     }
